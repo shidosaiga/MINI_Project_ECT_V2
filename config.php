@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "user_system";
+$dbname = "social_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

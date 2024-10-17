@@ -26,41 +26,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <!-- เพิ่ม Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container" style="max-width: 500px; margin-top: 50px;">
-    <h2 class="text-center">เข้าสู่ระบบ</h2>
-    
-    <!-- แสดงข้อความ Error -->
-    <?php if (isset($error)): ?>
-        <div class="alert alert-danger"><?php echo $error; ?></div>
-    <?php endif; ?>
+    <!DOCTYPE html>
+    <html lang="th">
 
-    <form method="POST" action="login.php">
-        <div class="form-group">
-            <label for="username">ชื่อผู้ใช้</label>
-            <input type="text" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">รหัสผ่าน</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
-        <p class="text-center mt-3">ยังไม่มีบัญชีผู้ใช้? <a href="register.php">สมัครสมาชิกที่นี่</a></p>
-    </form>
-</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <!-- เพิ่ม Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
 
-<!-- เพิ่ม Bootstrap JS และ jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <body>
+        <div class="container" style="max-width: 500px; margin-top: 50px;">
+            <h2 class="text-center">เข้าสู่ระบบ</h2>
+
+            <!-- แสดงข้อความ Error -->
+            <?php if (isset($error)): ?>
+            <div class="alert alert-danger">
+                <?php echo $error; ?>
+            </div>
+            <?php endif; ?>
+
+            <form method="POST" action="login.php">
+                <div class="form-group">
+                    <label for="username">ชื่อผู้ใช้</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">รหัสผ่าน</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+                <p class="text-center mt-3">ยังไม่มีบัญชีผู้ใช้? <a href="register.php">สมัครสมาชิกที่นี่</a></p>
+            </form>
+        </div>
+
+        <!-- เพิ่ม Bootstrap JS และ jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+
+    </html>

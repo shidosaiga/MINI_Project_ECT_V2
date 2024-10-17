@@ -12,6 +12,7 @@ $user_id = $_SESSION['user_id']; // รหัสผู้ใช้ที่ล�
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
     $post_id = $_POST['id'];
     $content = $_POST['content'];
+    $remove_image = isset($_POST['remove_image']); // ตรวจสอบว่าผู้ใช้ต้องการลบรูปภาพหรือไม่
 
     // ตรวจสอบว่าโพสต์นี้เป็นของผู้ใช้ที่ล็อกอินอยู่หรือไม่
     $query = "SELECT * FROM posts WHERE id = ? AND user_id = ?";
@@ -23,6 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $current_image = $row['image']; // เก็บรูปภาพเดิม
+
+        // ถ้าผู้ใช้ต้องการลบรูปภาพ ให้ลบออกจากฐานข้อมูล
+        if ($remove_image) {
+            $current_image = null;
+        }
 
         // ตรวจสอบว่าอัปโหลดรูปภาพใหม่หรือไม่
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -84,6 +90,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
                             <div class="form-group">
                                 <label>รูปภาพปัจจุบัน:</label><br>
                                 <img src="data:image/jpeg;base64,<?php echo $imageData; ?>" class="img-thumbnail" style="max-width: 300px;">
+                                <div class="form-check">
+                                    <input type="checkbox" name="remove_image" id="remove_image" class="form-check-input">
+                                    <label for="remove_image" class="form-check-label">ลบรูปภาพนี้</label>
+                                </div>
                             </div>
                         <?php endif; ?>
 
