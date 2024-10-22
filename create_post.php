@@ -72,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="file" name="image" id="image" class="form-control-file" accept="image/*">
                 </div>
                 <button type="submit" class="btn btn-success btn-block">โพสต์</button>
+                <a href="dashboard.php" class="btn btn-secondary btn-block">กลับไปที่หน้าหลัก</a>
             </form>
         </div>
     </div>

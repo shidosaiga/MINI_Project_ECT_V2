@@ -19,3 +19,14 @@ CREATE TABLE IF NOT EXISTS posts (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- วันที่โพสต์
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE -- ลบโพสต์เมื่อผู้ใช้ถูกลบ
 );
+
+
+CREATE TABLE IF NOT EXISTS comments (
+    id INT AUTO_INCREMENT PRIMARY KEY, -- รหัสความคิดเห็น (Primary Key)
+    post_id INT NOT NULL, -- รหัสโพสต์ที่แสดงความคิดเห็น (Foreign Key)
+    user_id INT NOT NULL, -- รหัสผู้ใช้ที่แสดงความคิดเห็น (Foreign Key)
+    content TEXT NOT NULL, -- เนื้อหาของความคิดเห็น
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- วันที่แสดงความคิดเห็น
+    FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE, -- ลบความคิดเห็นเมื่อโพสต์ถูกลบ
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE -- ลบความคิดเห็นเมื่อผู้ใช้ถูกลบ
+);
